@@ -1,6 +1,7 @@
 import React from 'react';
 import Sidebar from '../components/Sidebar';
 import UserNavbar from '../components/UserNavbar';
+import { motion } from 'motion/react';
 import { 
   Search, 
   Plus, 
@@ -19,9 +20,9 @@ const ExamManagement: React.FC = () => {
   const exams = [
     { id: 1, title: 'TOEIC Economy Vol 5 Test 1', category: 'Toeic', questions: 200, time: 120, status: 'Published', publishedDate: '2024-03-10' },
     { id: 2, title: 'IELTS Cambridge 18 Test 2', category: 'IELTS', questions: 40, time: 60, status: 'Draft', publishedDate: '2024-03-15' },
-    { id: 3, title: 'Toán Học 12 - Ôn Thi THPT Quốc Gia', category: 'THPT', questions: 50, time: 90, status: 'Published', publishedDate: '2024-02-28' },
-    { id: 4, title: 'Tiếng Anh Lớp 9 Lên 10 - Đề 01', category: 'Cấp 2', questions: 40, time: 60, status: 'Published', publishedDate: '2024-03-01' },
-    { id: 5, title: 'MOS Excel 2019 Practice', category: 'MOS', questions: 35, time: 50, status: 'Archived', publishedDate: '2023-12-12' },
+    { id: 3, title: 'TOEIC New Economy 2024 Test 5', category: 'Toeic', questions: 200, time: 120, status: 'Published', publishedDate: '2024-02-28' },
+    { id: 4, title: 'IELTS Writing Task 2 Intensive', category: 'IELTS', questions: 2, time: 60, status: 'Published', publishedDate: '2024-03-01' },
+    { id: 5, title: 'TOEIC Listening Part 1-4', category: 'Toeic', questions: 100, time: 45, status: 'Published', publishedDate: '2023-12-12' },
   ];
 
   return (

@@ -85,8 +85,6 @@ const CreateExam: React.FC = () => {
                         <option>Chọn danh mục</option>
                         <option>TOEIC</option>
                         <option>IELTS</option>
-                        <option>THPT Quốc Gia</option>
-                        <option>JLPT</option>
                       </select>
                     </div>
                   </div>

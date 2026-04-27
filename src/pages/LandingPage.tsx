@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
-import { ChevronRight, Play, BookOpen, Users, Trophy, Star } from 'lucide-react';
+import { ChevronRight, Play, BookOpen, Users, Trophy, Star, Facebook } from 'lucide-react';
 
 const LandingPage: React.FC = () => {
   return (
@@ -134,12 +134,12 @@ const LandingPage: React.FC = () => {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
-              { title: "Luyện thi đại học 2024", icon: "📚", count: "1,240 đề", players: "8.5k" },
-              { title: "TOEIC Full Practice", icon: "🎧", count: "450 đề", players: "12k" },
-              { title: "IELTS Intensive Prep", icon: "🌍", count: "320 đề", players: "5.2k" },
-              { title: "Chứng chỉ tin học MOS", icon: "💻", count: "210 đề", players: "3k" },
-              { title: "Toán học lớp 12", icon: "📐", count: "890 đề", players: "15k" },
-              { title: "Giao tiếp Tiếng Anh", icon: "🗣️", count: "150 đề", players: "4.8k" },
+              { title: "TOEIC Full Practice 2024", icon: "🎧", count: "1,240 đề", players: "15.5k" },
+              { title: "IELTS Academic Mock Test", icon: "🌍", count: "450 đề", players: "12k" },
+              { title: "IELTS General Training", icon: "📖", count: "320 đề", players: "5.2k" },
+              { title: "TOEIC Part 5 & 6 Intensive", icon: "📝", count: "890 đề", players: "8k" },
+              { title: "IELTS Speaking Assistant", icon: "🗣️", count: "150 đề", players: "4.8k" },
+              { title: "TOEIC Bridge Basic", icon: "📚", count: "210 đề", players: "3k" },
             ].map((item, idx) => (
               <motion.div 
                 key={idx}

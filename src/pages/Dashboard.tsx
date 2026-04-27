@@ -2,6 +2,7 @@ import React from 'react';
 import Sidebar from '../components/Sidebar';
 import UserNavbar from '../components/UserNavbar';
 import { motion } from 'motion/react';
+import { cn } from '../lib/utils';
 import { 
   Trophy, 
   Target, 
@@ -31,7 +32,7 @@ const Dashboard: React.FC = () => {
             <div className="mt-4 md:mt-0 flex space-x-3">
               <div className="bg-white px-4 py-2 rounded-xl border border-slate-200 flex items-center shadow-sm">
                 <Target className="text-primary w-4 h-4 mr-2" />
-                <span className="text-sm font-bold">Mục tiêu: 850+ Toeic</span>
+                <span className="text-sm font-bold">Mục tiêu: 8.0 IELTS</span>
               </div>
               <div className="bg-primary text-white px-4 py-2 rounded-xl flex items-center shadow-md shadow-primary/20">
                 <TrendingUp className="w-4 h-4 mr-2" />

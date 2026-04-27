@@ -2,6 +2,7 @@ import React from 'react';
 import Sidebar from '../components/Sidebar';
 import UserNavbar from '../components/UserNavbar';
 import { motion } from 'motion/react';
+import { cn } from '../lib/utils';
 import { 
   Users, 
   BookCopy, 
@@ -147,8 +148,8 @@ const AdminDashboard: React.FC = () => {
                   {[
                     { id: '#EX2941', name: 'Toeic Economy Vol 5 Test 1', cat: 'Toeic', plays: '12,492', status: 'Hoạt động' },
                     { id: '#EX2942', name: 'IELTS Cambridge 18 Test 2', cat: 'IELTS', plays: '8,210', status: 'Hoạt động' },
-                    { id: '#EX2943', name: 'Luyện thi ĐH môn Toán #01', cat: 'THPT', plays: '5,100', status: 'Bảo trì' },
-                    { id: '#EX2944', name: 'Đề thi thử lớp 9 vào 10', cat: 'Cấp 2', plays: '3,840', status: 'Hoạt động' },
+                    { id: '#EX2943', name: 'TOEIC New Economy 2024', cat: 'Toeic', plays: '5,100', status: 'Hoạt động' },
+                    { id: '#EX2944', name: 'IELTS Writing Task 2 Pro', cat: 'IELTS', plays: '3,840', status: 'Hoạt động' },
                   ].map((row, idx) => (
                     <tr key={idx} className="hover:bg-slate-50 transition-colors">
                       <td className="px-6 py-4 text-sm font-mono text-slate-400">{row.id}</td>
@@ -175,10 +176,5 @@ const AdminDashboard: React.FC = () => {
     </div>
   );
 };
-
-// Local utility for sidebar context
-function cn(...inputs: any[]) {
-  return inputs.filter(Boolean).join(' ');
-}
 
 export default AdminDashboard;

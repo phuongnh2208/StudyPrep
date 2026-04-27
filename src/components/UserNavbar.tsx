@@ -1,6 +1,7 @@
 import React from 'react';
 import { Search, Bell, User as UserIcon, Settings, LogOut, ChevronDown } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
+import { cn } from '../lib/utils';
 
 const UserNavbar: React.FC = () => {
   const [showProfileMenu, setShowProfileMenu] = React.useState(false);
@@ -74,10 +75,5 @@ const UserNavbar: React.FC = () => {
     </header>
   );
 };
-
-// Internal utility to use cn in navbar without circular deps if possible
-function cn(...inputs: any[]) {
-  return inputs.filter(Boolean).join(' ');
-}
 
 export default UserNavbar;
