@@ -17,9 +17,9 @@ const LandingPage: React.FC = () => {
           </div>
           
           <div className="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-600">
-            <a href="#" className="hover:text-primary transition-colors">Khóa học</a>
-            <a href="#" className="hover:text-primary transition-colors">Đề thi</a>
-            <a href="#" className="hover:text-primary transition-colors">Về chúng tôi</a>
+            <Link to="/courses" className="hover:text-primary transition-colors">Khóa học</Link>
+            <Link to="/exams-list" className="hover:text-primary transition-colors">Đề thi</Link>
+            <Link to="/about" className="hover:text-primary transition-colors">Về chúng tôi</Link>
             <Link to="/pricing" className="hover:text-primary transition-colors">Bảng giá</Link>
           </div>
 
@@ -134,25 +134,33 @@ const LandingPage: React.FC = () => {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
-              { title: "TOEIC Full Practice 2024", icon: "🎧", count: "1,240 đề", players: "15.5k" },
-              { title: "IELTS Academic Mock Test", icon: "🌍", count: "450 đề", players: "12k" },
-              { title: "IELTS General Training", icon: "📖", count: "320 đề", players: "5.2k" },
-              { title: "TOEIC Part 5 & 6 Intensive", icon: "📝", count: "890 đề", players: "8k" },
-              { title: "IELTS Speaking Assistant", icon: "🗣️", count: "150 đề", players: "4.8k" },
-              { title: "TOEIC Bridge Basic", icon: "📚", count: "210 đề", players: "3k" },
+              { id: 1, title: "TOEIC Full Practice 2024", icon: "🎧", count: "1,240 đề", players: "15.5k" },
+              { id: 2, title: "IELTS Academic Mock Test", icon: "🌍", count: "450 đề", players: "12k" },
+              { id: 3, title: "IELTS General Training", icon: "📖", count: "320 đề", players: "5.2k" },
+              { id: 4, title: "TOEIC Part 5 & 6 Intensive", icon: "📝", count: "890 đề", players: "8k" },
+              { id: 5, title: "IELTS Speaking Assistant", icon: "🗣️", count: "150 đề", players: "4.8k" },
+              { id: 6, title: "TOEIC Bridge Basic", icon: "📚", count: "210 đề", players: "3k" },
             ].map((item, idx) => (
-              <motion.div 
+              <Link 
+                to={`/exam/${item.id}`}
                 key={idx}
-                whileHover={{ y: -5 }}
-                className="card p-6 cursor-pointer hover:border-primary/30 group"
+                className="block group"
               >
-                <div className="text-4xl mb-4">{item.icon}</div>
-                <h3 className="text-lg font-bold text-slate-900 mb-2 group-hover:text-primary transition-colors">{item.title}</h3>
-                <div className="flex items-center space-x-4 text-xs text-slate-500">
-                  <span className="flex items-center"><BookOpen className="w-3 h-3 mr-1" /> {item.count}</span>
-                  <span className="flex items-center"><Users className="w-3 h-3 mr-1" /> {item.players} lượt học</span>
-                </div>
-              </motion.div>
+                <motion.div 
+                  whileHover={{ y: -5 }}
+                  className="card p-6 cursor-pointer hover:border-primary/30 group bg-white"
+                >
+                  <div className="text-4xl mb-4 grayscale group-hover:grayscale-0 transition-all">{item.icon}</div>
+                  <h3 className="text-lg font-bold text-slate-900 mb-2 group-hover:text-primary transition-colors">{item.title}</h3>
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center space-x-4 text-xs text-slate-500">
+                      <span className="flex items-center"><BookOpen className="w-3 h-3 mr-1" /> {item.count}</span>
+                      <span className="flex items-center"><Users className="w-3 h-3 mr-1" /> {item.players} lượt học</span>
+                    </div>
+                    <ChevronRight size={16} className="text-primary opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
+                  </div>
+                </motion.div>
+              </Link>
             ))}
           </div>
 

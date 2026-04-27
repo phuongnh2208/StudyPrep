@@ -14,23 +14,30 @@ import {
 import { cn } from '../lib/utils';
 import { motion } from 'motion/react';
 
-interface SidebarProps {
-  isAdmin?: boolean;
-}
-
-const Sidebar: React.FC<SidebarProps> = ({ isAdmin = false }) => {
+const Sidebar: React.FC = () => {
   const [isCollapsed, setIsCollapsed] = React.useState(false);
+  const user = JSON.parse(localStorage.getItem('user') || 'null');
+  const role = user?.role || 'student';
 
-  const menuItems = isAdmin ? [
-    { icon: LayoutDashboard, label: 'Thống kê', path: '/admin/dashboard' },
+  const menuItems = role === 'admin' ? [
+    { icon: LayoutDashboard, label: 'Thống kê Admin', path: '/admin/dashboard' },
+    { icon: ShieldCheck, label: 'Quản lý người dùng', path: '/admin/users' },
     { icon: BookOpen, label: 'Quản lý đề thi', path: '/admin/exams' },
-    { icon: ShieldCheck, label: 'Người dùng', path: '/admin/users' },
+  ] : role === 'teacher' ? [
+    { icon: LayoutDashboard, label: 'Thống kê GV', path: '/teacher/dashboard' },
+    { icon: BookOpen, label: 'Quản lý đề thi', path: '/admin/exams' },
+    { icon: History, label: 'Lịch sử chấm bài', path: '/teacher/history' },
   ] : [
     { icon: LayoutDashboard, label: 'Tổng quan', path: '/dashboard' },
     { icon: BookOpen, label: 'Kho đề thi', path: '/exams' },
     { icon: History, label: 'Lịch sử thi', path: '/history' },
     { icon: Award, label: 'Chứng chỉ', path: '/certificates' },
   ];
+
+  const handleLogout = () => {
+    localStorage.removeItem('user');
+    window.location.href = '/login';
+  };
 
   return (
     <motion.aside 
@@ -84,7 +91,10 @@ const Sidebar: React.FC<SidebarProps> = ({ isAdmin = false }) => {
           <Settings size={20} className={cn("flex-shrink-0", isCollapsed ? "mx-auto" : "mr-3")} />
           {!isCollapsed && <span>Cài đặt</span>}
         </NavLink>
-        <button className="w-full flex items-center px-4 py-3 rounded-xl text-slate-500 hover:bg-red-50 hover:text-red-600 transition-all duration-200 text-sm font-medium">
+        <button 
+          onClick={handleLogout}
+          className="w-full flex items-center px-4 py-3 rounded-xl text-slate-500 hover:bg-red-50 hover:text-red-600 transition-all duration-200 text-sm font-medium"
+        >
           <LogOut size={20} className={cn("flex-shrink-0", isCollapsed ? "mx-auto" : "mr-3")} />
           {!isCollapsed && <span>Đăng xuất</span>}
         </button>

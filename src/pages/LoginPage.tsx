@@ -8,7 +8,35 @@ const LoginPage: React.FC = () => {
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    navigate('/dashboard');
+    const email = (e.target as any).querySelector('input[type="text"]').value.toLowerCase();
+    const password = (e.target as any).querySelector('input[type="password"]').value;
+
+    if (password === '123') {
+      let role = '';
+      let dashboard = '';
+      let name = '';
+
+      if (email === 'user') {
+        role = 'student';
+        dashboard = '/dashboard';
+        name = 'Học viên Demo';
+      } else if (email === 'teacher') {
+        role = 'teacher';
+        dashboard = '/teacher/dashboard';
+        name = 'Giáo viên Demo';
+      } else if (email === 'admin') {
+        role = 'admin';
+        dashboard = '/admin/dashboard';
+        name = 'Quản trị viên';
+      }
+
+      if (role) {
+        localStorage.setItem('user', JSON.stringify({ name, email, role }));
+        navigate(dashboard);
+        return;
+      }
+    }
+    alert('Sai thông tin đăng nhập! Gợi ý: user/123, teacher/123, admin/123');
   };
 
   return (
@@ -28,10 +56,10 @@ const LoginPage: React.FC = () => {
 
         <form onSubmit={handleLogin} className="space-y-5">
           <div className="space-y-1.5">
-            <label className="text-xs font-semibold text-slate-700 uppercase tracking-wider ml-1">Email</label>
+            <label className="text-xs font-semibold text-slate-700 uppercase tracking-wider ml-1">Tên đăng nhập</label>
             <input 
-              type="email" 
-              placeholder="nhapkho@example.com"
+              type="text" 
+              placeholder="user, teacher hoặc admin"
               className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all text-sm"
               required
             />
@@ -43,6 +71,7 @@ const LoginPage: React.FC = () => {
               type="password" 
               placeholder="••••••••"
               className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all text-sm"
+              defaultValue="123"
               required
             />
           </div>

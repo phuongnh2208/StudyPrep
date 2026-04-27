@@ -16,6 +16,8 @@ import {
 import { Link } from 'react-router-dom';
 
 const Dashboard: React.FC = () => {
+  const user = JSON.parse(localStorage.getItem('user') || 'null') || { name: 'Khách' };
+
   return (
     <div className="flex min-h-screen bg-[#F8F9FF]">
       <Sidebar />
@@ -26,7 +28,7 @@ const Dashboard: React.FC = () => {
           {/* Welcome Header */}
           <div className="flex flex-col md:flex-row justify-between items-end mb-8">
             <div>
-              <h1 className="text-3xl font-extrabold text-slate-900 tracking-tight">Chào buổi sáng, A!</h1>
+              <h1 className="text-3xl font-extrabold text-slate-900 tracking-tight">Chào buổi sáng, {user.name}!</h1>
               <p className="text-slate-500 mt-1">Đã đến lúc bắt đầu luyện tập cho mục tiêu hôm nay.</p>
             </div>
             <div className="mt-4 md:mt-0 flex space-x-3">

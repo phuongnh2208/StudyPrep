@@ -27,16 +27,18 @@ const data = [
 ];
 
 const AdminDashboard: React.FC = () => {
+  const user = JSON.parse(localStorage.getItem('user') || 'null') || { name: 'Admin' };
+
   return (
     <div className="flex min-h-screen bg-[#F8F9FF]">
-      <Sidebar isAdmin={true} />
+      <Sidebar />
       <div className="flex-1 flex flex-col">
         <UserNavbar />
         
         <main className="p-8 flex-1 overflow-auto custom-scrollbar">
           <div className="mb-8">
             <h1 className="text-3xl font-extrabold text-slate-900 tracking-tight">Quản trị hệ thống</h1>
-            <p className="text-slate-500 mt-1">Tổng quan về hiệu suất hoạt động của StudyPrep.</p>
+            <p className="text-slate-500 mt-1">Xin chào {user.name}, đây là tổng quan về StudyPrep.</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">

@@ -17,6 +17,8 @@ import { Link } from 'react-router-dom';
 import { cn } from '../lib/utils';
 
 const ExamManagement: React.FC = () => {
+  const user = JSON.parse(localStorage.getItem('user') || 'null') || { role: 'teacher' };
+
   const exams = [
     { id: 1, title: 'TOEIC Economy Vol 5 Test 1', category: 'Toeic', questions: 200, time: 120, status: 'Published', publishedDate: '2024-03-10' },
     { id: 2, title: 'IELTS Cambridge 18 Test 2', category: 'IELTS', questions: 40, time: 60, status: 'Draft', publishedDate: '2024-03-15' },
@@ -27,7 +29,7 @@ const ExamManagement: React.FC = () => {
 
   return (
     <div className="flex min-h-screen bg-[#F8F9FF]">
-      <Sidebar isAdmin={true} />
+      <Sidebar />
       <div className="flex-1 flex flex-col">
         <UserNavbar />
         
